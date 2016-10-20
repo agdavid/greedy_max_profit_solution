@@ -9,27 +9,27 @@
 # Write an efficient function that takes stock_prices_yesterday and returns the best profit 
 # I could have made from 1 purchase and 1 sale of 1 Apple stock yesterday.
 
-# hash1 = { 0=>15, 1=>35, 2=>7, 3=>18, 4=>28, 5=>1 } #max_profit expected is (35-15) = 20
+# array = [5, 25, 15, 75, 3] so get_max_profit(array) #=> 70
 
-def get_max_profit(hash)
+def get_max_profit(array)
 
-    if hash.length < 2
+    if array.length < 2
         # raise error if there are less than two prices b/c you need to "buy" and "sell" at two prices to profit
         raise "Oops! You need at least two prices to calculate a profit."
     else
         #the first min_price will be the first price of the day
-        min_price = hash[0]
+        min_price = array[0]
         # the first max_profit will be the difference between the first and second prices of the day
         # why? these are the first opportunities to "buy" and "sell"
-        max_profit = (hash[1]-hash[0])
+        max_profit = array[1]-array[0]
 
         # loop through entire hash and update max_profit and min_price accordingly
-        hash.each_with_index do |current_price, index|
+        array.each_with_index do |current_price, index|
             # skip the first key-value pair b/c you already have that calculated as the defaults
             if index == 0 then next end
                 
             # calculate profit if sold at current price    
-            potential_profit = (current_price-min_price)
+            potential_profit = current_price-min_price
 
             # keep the higher profit
             max_profit = [max_profit, potential_profit].max
