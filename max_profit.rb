@@ -11,10 +11,14 @@
 
 def max_profit(hash)
 
-  if hash.length < 2
-    # raise error if there are less than two prices b/c you need to "buy" and "sell" at two prices to profit
-    raise "Oops! You need at least two prices to calculate a profit."
-  else
-
-  end
+    if hash.length < 2
+        # raise error if there are less than two prices b/c you need to "buy" and "sell" at two prices to profit
+        raise "Oops! You need at least two prices to calculate a profit."
+    else
+        #the first min_price will be the first price of the day
+        min_price = hash[0]
+        # the first max_profit will be the difference between the first and second prices of the day
+        # why? these are the first opportunities to "buy" and "sell"
+        max_profit = hash[1] - hash[0]
+    end
 end
